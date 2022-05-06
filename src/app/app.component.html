@@ -1,0 +1,18 @@
+<hello name="{{ name }}"></hello>
+<h2>Leonardo Hidemitsu Yogui Yamashiro</h2>
+<h2>RA: 0050832011017</h2>
+{{ timer.getCount() }}
+<hr />
+
+<table border="2">
+  <tr>
+    <th>Data/Hora</th>
+    <th>USD</th>
+    <th>BRL</th>
+  </tr>
+  <tr *ngFor="let rate of this.bitcoinService.list">
+    <td>{{ rate.time.updated }}</td>
+    <td>{{ rate.bpi.USD.rate_float }}</td>
+    <td>{{ rate.bpi.BRL.rate_float }}</td>
+  </tr>
+</table>
