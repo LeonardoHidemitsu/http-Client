@@ -31,6 +31,9 @@ export class BitcoinService {
         this.current = data;
         this.list.push(data);
       });
+    if (this.counter == 60) {
+      this.update();
+    }
   }
 
   start(ms: number) {
@@ -39,6 +42,7 @@ export class BitcoinService {
       this.timer = setInterval(() => {
         this.counter++;
       }, ms);
+      this.update();
     }
   }
 
