@@ -1,6 +1,5 @@
 import { Component, VERSION } from '@angular/core';
 import { BitcoinService } from './bitcoin.service';
-import { TemporizadorService } from './temporizador.service';
 
 @Component({
   selector: 'my-app',
@@ -10,14 +9,9 @@ import { TemporizadorService } from './temporizador.service';
 export class AppComponent {
   name = 'HTTP Client';
 
-  constructor(
-    public bitcoinService: BitcoinService,
-    public timer: TemporizadorService
-  ) {
-    this.timer.start(1000);
-  }
+  constructor(public bitcoinService: BitcoinService) {}
 
   ngOnInit() {
-    this.bitcoinService.update();
+    this.bitcoinService.start(1000);
   }
 }

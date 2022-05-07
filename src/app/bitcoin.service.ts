@@ -19,6 +19,8 @@ interface Response {
 export class BitcoinService {
   current: Response;
   list: Array<Response> = [];
+  private timer: any;
+  private counter = 0;
 
   constructor(private http: HttpClient) {}
 
@@ -29,5 +31,18 @@ export class BitcoinService {
         this.current = data;
         this.list.push(data);
       });
+  }
+
+  start(ms: number) {
+    if (!this.timer) {
+      this.counter = 0;
+      this.timer = setInterval(() => {
+        this.counter++;
+      }, ms);
+    }
+  }
+
+  getCount() {
+    return this.counter;
   }
 }
